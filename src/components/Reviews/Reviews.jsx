@@ -18,7 +18,6 @@ const Reviews = () => {
 
   return (
     <div>
-      THIS IS REVIEWS PAGE
       <ul>
         {result.map(item => {
           return (

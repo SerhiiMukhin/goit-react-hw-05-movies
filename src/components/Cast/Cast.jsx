@@ -1,4 +1,3 @@
-
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMovieCredits } from 'utils/API';
@@ -14,12 +13,10 @@ const Cast = () => {
         setResult(response.cast);
       })
       .catch(error => console.log(error));
-    }, [movieId]);
-    console.log(result)
+  }, [movieId]);
 
   return (
-    <div>
-      THIS IS CAST PAGE
+    <div> 
       <ul>
         {result.map(item => {
           return <li key={item.cast_id}>{item.original_name || item.name}</li>;
