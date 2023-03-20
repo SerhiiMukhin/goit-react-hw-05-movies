@@ -22,7 +22,7 @@ const Cast = () => {
       THIS IS CAST PAGE
       <ul>
         {result.map(item => {
-          return <li key={item.cast_id}>{item.original_title || item.name}</li>;
+          return <li key={item.cast_id}>{item.original_name || item.name}</li>;
         })}
       </ul>
     </div>
