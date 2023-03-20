@@ -14,14 +14,15 @@ const Cast = () => {
         setResult(response.cast);
       })
       .catch(error => console.log(error));
-  }, [movieId]);
+    }, [movieId]);
+    console.log(result)
 
   return (
     <div>
       THIS IS CAST PAGE
       <ul>
         {result.map(item => {
-          return <li key={item.id}>{item.original_title || item.name}</li>;
+          return <li key={item.cast_id}>{item.original_title || item.name}</li>;
         })}
       </ul>
     </div>
