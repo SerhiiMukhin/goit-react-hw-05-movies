@@ -19,7 +19,7 @@ const MovieDetails = () => {
 
   useEffect(() => {
     setBackLinkHref(location.state.from || '/');
-  }, []);
+  });
 
   return (
     <div>
