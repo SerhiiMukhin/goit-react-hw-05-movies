@@ -1,10 +1,10 @@
-
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { getTrendingMovies } from 'utils/API';
 
 const Home = () => {
   const [results, setResults] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     getTrendingMovies()
@@ -22,6 +22,7 @@ const Home = () => {
           return (
             <Link
               to={`movies/${item.id}`}
+              state={{ from: location }}
               key={item.id}
             >
               <li>{item.original_title || item.name}</li>

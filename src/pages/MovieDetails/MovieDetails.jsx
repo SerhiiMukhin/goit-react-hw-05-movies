@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import Cast from 'components/Cast/Cast';
@@ -8,8 +8,9 @@ import { getMovieById } from 'utils/API';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
-
+  const location = useLocation();
   const [result, setResult] = useState([]);
+  const [backLink, setBackLink] = useState('/');
 
   useEffect(() => {
     getMovieById(movieId)
@@ -19,9 +20,14 @@ const MovieDetails = () => {
       .catch(error => console.log(error));
   }, [movieId]);
 
+  useEffect(() => {
+    setBackLink(location.state.from || '/');
+  }, []);
+
   return (
     <div>
-      {<h1>{result.original_title || result.name}</h1>}
+      <Link to={backLink}>Go back</Link>
+      {<h1>{result.title || result.name}</h1>}
       <Link to="cast" element={<Cast></Cast>}>
         Cast
       </Link>
