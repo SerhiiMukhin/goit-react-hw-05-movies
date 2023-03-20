@@ -1,5 +1,5 @@
 import { useLocation, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { getMovieById } from 'utils/API';
 
@@ -7,7 +7,7 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const location = useLocation();
   const [result, setResult] = useState([]);
-  const [backLinkHref, setBackLinkHref] = useState('/');
+  const backLinkHref = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     getMovieById(movieId)
@@ -17,13 +17,9 @@ const MovieDetails = () => {
       .catch(error => console.log(error));
   }, [movieId]);
 
-  useEffect(() => {
-    setBackLinkHref(location.state.from || '/');
-  });
-
   return (
     <div>
-      <Link to={backLinkHref}>Go back</Link>
+      <Link to={backLinkHref.current}>Go back</Link>
       {<h1>{result.title || result.name}</h1>}
       <Link to="cast">Cast</Link>
       <Link to="reviews">Reviews</Link>
