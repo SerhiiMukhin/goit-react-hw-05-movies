@@ -1,29 +1,23 @@
-// import css from './MovieDetails.module.css'
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import Cast from 'components/Cast/Cast';
 import Reviews from 'components/Reviews/Reviews';
 import { Outlet, Link } from 'react-router-dom';
-
-import getResponse from 'utils/API';
+import { getMovieById } from 'utils/API';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
-  console.log(movieId);
-
-  const endpoint = `movie/${movieId}`;
 
   const [result, setResult] = useState([]);
 
   useEffect(() => {
-    getResponse(endpoint)
+    getMovieById(movieId)
       .then(response => {
-        console.log(response);
-        setResult(response.data);
+        setResult(response);
       })
       .catch(error => console.log(error));
-  }, [endpoint]);
+  }, [movieId]);
 
   return (
     <div>

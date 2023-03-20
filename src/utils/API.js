@@ -1,32 +1,59 @@
 import axios from 'axios';
 
-const API_KEY = 'a59dfea75e9e40e203f0819879862061';
 const BASE_URL = 'https://api.themoviedb.org/3/';
+const API_KEY = 'a59dfea75e9e40e203f0819879862061';
 
-function getResponse(endpoint) {
-  return axios.get(`${BASE_URL}${endpoint}?api_key=${API_KEY}`)
+export async function getTrendingMovies() {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}trending/movie/day?api_key=${API_KEY}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-export default getResponse;
+export async function getMovieById(movieId) {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
 
-// endpoints
+export async function getMovieCredits(movieId) {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
 
-// /trending/get-trending список найпопулярніших фільмів на сьогодні для створення колекції на головній сторінці.
+export async function getMovieReviews(movieId) {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}movie/${movieId}/reviews?api_key=${API_KEY}&language=en-US`
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
 
-// https://developers.themoviedb.org/3/trending/get-trending
-
-// /search/search-movies пошук фільму за ключовим словом на сторінці фільмів.
-
-// https://developers.themoviedb.org/3/search/search-movies
-
-// /movies/get-movie-details запит повної інформації про фільм для сторінки кінофільму.
-
-// https://developers.themoviedb.org/3/movies/get-movie-details
-
-// /movies/get-movie-credits запит інформації про акторський склад для сторінки кінофільму.
-
-// https://developers.themoviedb.org/3/movies/get-movie-credits
-
-// /movies/get-movie-reviews запит оглядів для сторінки кінофільму.
-
-// https://developers.themoviedb.org/3/movies/get-movie-reviews
+export async function getMoviesByQuery(query) {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${query}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}

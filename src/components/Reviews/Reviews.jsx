@@ -1,24 +1,20 @@
-// import css from './Reviews.module.css'
+
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import getResponse from 'utils/API';
+import { getMovieReviews } from 'utils/API';
 
 const Reviews = () => {
   const { movieId } = useParams();
-  console.log(movieId);
-
-  const endpoint = `/movie/${movieId}/reviews`;
 
   const [result, setResult] = useState([]);
 
   useEffect(() => {
-    getResponse(endpoint)
+    getMovieReviews(movieId)
       .then(response => {
-        console.log(response);
-        setResult(response.data.results);
+        setResult(response.results);
       })
       .catch(error => console.log(error));
-  }, [endpoint]);
+  }, [movieId]);
 
   return (
     <div>

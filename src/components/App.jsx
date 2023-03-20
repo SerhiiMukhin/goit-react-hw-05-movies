@@ -1,31 +1,24 @@
-import { Link, Route, Routes } from 'react-router-dom';
-// import getResponse from 'utils/API';
+import { Route, Routes } from 'react-router-dom';
 import Cast from './Cast/Cast';
-import Home from './Home/Home';
-import MovieDetails from './MovieDetails/MovieDetails';
-import Movies from './Movies/Movies';
+import Home from '../pages/Home/Home';
+import MovieDetails from '../pages/MovieDetails/MovieDetails';
+import Movies from '../pages/Movies/Movies';
 import Reviews from './Reviews/Reviews';
-
-import css from './App.module.css';
+import SharedLayout from './SharedLayout/SharedLayout';
 
 export const App = () => {
-
   return (
     <div>
-      <nav className={css.nav}>
-        <Link to="/">Home</Link>
-        <Link to="/movies">Movies</Link>
-      </nav>
-
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies />}></Route>
-        <Route path="/movies/:movieId/" element={<MovieDetails />}>
-          <Route path="cast" element={<Cast></Cast>}></Route>
-          <Route path="reviews" element={<Reviews></Reviews>}></Route>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home />} />
+          <Route path="movies" element={<Movies />}></Route>
+          <Route path="movies/:movieId" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />}></Route>
+            <Route path="reviews" element={<Reviews />}></Route>
+          </Route>
+          <Route path="*" element={<Home />} />
         </Route>
-
-        <Route path="*" element={<Home />} />
       </Routes>
     </div>
   );

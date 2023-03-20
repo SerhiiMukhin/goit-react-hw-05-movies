@@ -1,25 +1,20 @@
-// import css from './Cast.module.css'
 
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import getResponse from 'utils/API';
+import { getMovieCredits } from 'utils/API';
 
 const Cast = () => {
   const { movieId } = useParams();
-  console.log(movieId);
-
-  const endpoint = `movie/${movieId}/credits`;
 
   const [result, setResult] = useState([]);
 
   useEffect(() => {
-    getResponse(endpoint)
+    getMovieCredits(movieId)
       .then(response => {
-        console.log(response);
-        setResult(response.data.cast);
+        setResult(response.cast);
       })
       .catch(error => console.log(error));
-  }, [endpoint]);
+  }, [movieId]);
 
   return (
     <div>
