@@ -2,6 +2,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { getMovieById } from 'utils/API';
+import FilmCard from 'components/FilmCard/FilmCard';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -17,12 +18,10 @@ const MovieDetails = () => {
       .catch(error => console.log(error));
   }, [movieId]);
 
-  console.log(result)
-
   return (
     <div>
       <Link to={backLinkHref.current}>Go back</Link>
-      {<h1>{result.title || result.name}</h1>}
+      <FilmCard info={result}></FilmCard>
       <Link to="cast">Cast</Link>
       <Link to="reviews">Reviews</Link>
       <Outlet></Outlet>
