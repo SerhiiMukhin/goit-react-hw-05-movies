@@ -1,5 +1,5 @@
 const FilmCard = ({ info }) => {
-  const { title, name, poster_path, release_date, overview, genres } = info;
+  const { title, name, poster_path, release_date, overview } = info;
   return (
     <div>
       <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt={title} />
