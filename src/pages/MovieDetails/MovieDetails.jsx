@@ -17,6 +17,8 @@ const MovieDetails = () => {
       .catch(error => console.log(error));
   }, [movieId]);
 
+  console.log(result)
+
   return (
     <div>
       <Link to={backLinkHref.current}>Go back</Link>
