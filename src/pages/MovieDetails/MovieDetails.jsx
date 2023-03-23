@@ -7,21 +7,31 @@ import FilmCard from 'components/FilmCard/FilmCard';
 const MovieDetails = () => {
   const { movieId } = useParams();
   const location = useLocation();
-  const [result, setResult] = useState([]);
+  const [result, setResult] = useState(null);
   const backLinkHref = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     getMovieById(movieId)
-      .then(response => {
-        setResult(response);
-      })
+      .then(setResult)
       .catch(error => console.log(error));
-  }, [movieId]);
+    // eslint-disable-next-line
+  }, []);
+
+  console.log(result);
 
   return (
     <div>
       <Link to={backLinkHref.current}>Go back</Link>
-      <FilmCard info={result}></FilmCard>
+      <div>
+        {!result ? (
+          <h2>Loading...</h2>
+        ) : (
+          <div>
+            <FilmCard info={result} />
+          </div>
+        )}
+      </div>
+      <h2>Additional information</h2>
       <Link to="cast">Cast</Link>
       <Link to="reviews">Reviews</Link>
       <Outlet></Outlet>

@@ -1,0 +1,37 @@
+.container {
+  padding: 15px;
+  width: 100vw;
+}
+
+.title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.list {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid transparent;
+}
+
+.card:hover,
+.card:focus {
+  border: 1px solid #20bcc6;
+}
+
+.homeImg {
+  transform-origin: center;
+  transition: 0.5s;
+}
+
+.homeImg:hover,
+.homeImg:focus {
+  transform: scale(1.2);
+}
