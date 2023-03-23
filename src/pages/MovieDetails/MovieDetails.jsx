@@ -19,8 +19,6 @@ const MovieDetails = () => {
     // eslint-disable-next-line
   }, []);
 
-  console.log(result);
-
   return (
     <div className={css.container}>
       <Link to={backLinkHref.current} className={css.goBackLink}>

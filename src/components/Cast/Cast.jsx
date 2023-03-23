@@ -16,8 +16,6 @@ const Cast = () => {
       .catch(error => console.log(error));
   }, [movieId]);
 
-  console.log(result);
-
   return (
     <div className={css.wrapper}>
       {result ? (

@@ -1,4 +1,5 @@
 import css from './FilmCard.module.css';
+import PropTypes from 'prop-types';
 
 const FilmCard = ({ info }) => {
   const { title, name, poster_path, release_date, overview, genres } = info;
@@ -30,3 +31,7 @@ const FilmCard = ({ info }) => {
 };
 
 export default FilmCard;
+
+FilmCard.propTypes = {
+  info: PropTypes.object.isRequired,
+};

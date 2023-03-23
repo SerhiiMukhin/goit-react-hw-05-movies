@@ -15,8 +15,6 @@ const Home = () => {
       .catch(error => console.log(error));
   }, []);
 
-  console.log(results);
-
   return (
     <div className={css.container}>
       <h1 className={css.title}>Trending Today</h1>

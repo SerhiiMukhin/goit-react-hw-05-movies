@@ -25,8 +25,6 @@ const Movies = () => {
       .catch(error => console.log(error));
   }, [query]);
 
-  console.log(result);
-
   return (
     <div>
       <form onSubmit={handleSubmit} className={css.form}>
