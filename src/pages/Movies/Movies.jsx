@@ -1,6 +1,7 @@
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { getMoviesByQuery } from 'utils/API';
 import { useState, useEffect } from 'react';
+import css from './Movies.module.css';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -24,21 +25,32 @@ const Movies = () => {
       .catch(error => console.log(error));
   }, [query]);
 
+  console.log(result);
+
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="query" />
-        <button type="submit">Submit</button>
+      <form onSubmit={handleSubmit} className={css.form}>
+        <input type="text" name="query" className={css.input} />
+        <button type="submit" className={css.button}>Search</button>
       </form>
       {query !== '' && (
-        <ul>
+        <ul className={css.list}>
           {result.map(item => {
             return (
-              <li key={item.id}>
-                <Link to={`${item.id}`} state={{ from: location }}>
-                  {item.title || item.name}
-                </Link>
-              </li>
+              <Link to={`${item.id}`} state={{ from: location }} key={item.id}>
+                <li className={css.card}>
+                  {item.backdrop_path !== null ? (
+                    <img
+                      src={`https://image.tmdb.org/t/p/w300${item.backdrop_path}`}
+                      alt={item.title}
+                      title={item.title}
+                      className={css.homeImg}
+                    />
+                  ) : (
+                    <div className={css.placeholder}>Sorry, no image found :(</div>
+                  )}
+                </li>
+              </Link>
             );
           })}
         </ul>

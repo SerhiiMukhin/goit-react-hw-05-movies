@@ -1,7 +1,7 @@
-
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMovieReviews } from 'utils/API';
+import css from './Reviews.module.css';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -17,17 +17,23 @@ const Reviews = () => {
   }, [movieId]);
 
   return (
-    <div>
-      <ul>
-        {result.map(item => {
-          return (
-            <li key={item.id}>
-              <h2>{item.author}</h2>
-              <p>{item.content}</p>
-            </li>
-          );
-        })}
-      </ul>
+    <div className={css.wrapper}>
+      {result.length > 0 ? (
+        <ul>
+          {result.map(item => {
+            return (
+              <li key={item.id} className={
+                css.item
+              }>
+                <h2>{item.author}</h2>
+                <p>{item.content}</p>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <p>No reviews found</p>
+      )}
     </div>
   );
 };

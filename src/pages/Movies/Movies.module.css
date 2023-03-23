@@ -1,0 +1,76 @@
+.form {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.input {
+  width: 300px;
+  height: 25px;
+  padding-right: 65px;
+  padding-left: 15px;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  padding: 1px;
+}
+
+.button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 25px;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  transition: 0.5s;
+}
+
+.button:hover,
+.button:focus {
+    background-color: #20BCC6;
+    color: white;
+}
+
+.list {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid transparent;
+}
+
+.card:hover,
+.card:focus {
+  border: 1px solid #20bcc6;
+}
+
+.homeImg {
+  width: 300px;
+  height: 169px;
+  transform-origin: center;
+  transition: 0.5s;
+}
+
+.homeImg:hover,
+.homeImg:focus {
+  transform: scale(1.2);
+}
+
+.placeholder {
+  width: 300px;
+  height: 169px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}

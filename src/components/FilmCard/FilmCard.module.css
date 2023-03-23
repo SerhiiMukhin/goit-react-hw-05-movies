@@ -1,0 +1,23 @@
+.wrapper {
+  display: flex;
+margin-bottom: 10px;
+}
+
+.poster {
+  width: 200px;
+}
+
+.info_wrapper {
+  margin-left: 15px;
+  width: 700px;
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+.content {
+  margin-bottom: 8px;
+  width: 100%;
+  overflow-wrap: break-word;
+}

@@ -1,0 +1,28 @@
+.wrapper {
+    margin-top: 20px;
+}
+
+.item {
+    width: 100px;
+}
+
+.image {
+    width: 100px;
+}
+
+.placeholder {
+    width: 100px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.list {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 20px;
+    flex-wrap: wrap;
+}
